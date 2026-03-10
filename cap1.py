@@ -34,7 +34,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Firebase Configuration
 FIREBASE_CONFIG = {
-    "apiKey": "AIzaSyDT0h7T88k51e9JtazrGRUaRi6liiqQhiU",
+    "apiKey": "Api key here",
     "authDomain": "gramin-smartcare.firebaseapp.com",
     "projectId": "gramin-smartcare",
     "storageBucket": "gramin-smartcare.firebasestorage.app",
