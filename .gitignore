@@ -1,3 +1,6 @@
-/Capstone 1.txt
-/Capstone.html
-/Capstone4
+firebase-service-account.json
+.env
+pharmacy.db
+__pycache__/
+*.pyc
+instance/
