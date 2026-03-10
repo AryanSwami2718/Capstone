@@ -1,0 +1,7 @@
+flask
+flask-sqlalchemy
+firebase-admin
+requests
+werkzeug
+gunicorn
+python-dotenv
