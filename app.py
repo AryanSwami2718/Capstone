@@ -52,7 +52,7 @@ FIREBASE_CONFIG = {
     "measurementId": "G-BTQNK50HH8"
 }
 
-OPENROUTER_API_KEY =os.environ.get("OPENAI_API_KEY")
+OPENROUTER_API_KEY =os.environ.get("OPENROUTER_API_KEY")
 
 # Initialize Firebase Admin SDK
 try:
