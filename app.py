@@ -28,13 +28,22 @@ from firebase_admin import credentials, auth as firebase_auth, firestore
 # ============================================================
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'gramin-smartcare-secret-2024'
+app.config['SECRET_KEY'] = 'gramin-smartcare-secret-2026'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pharmacy.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# Load credentials from environment variable
+firebase_creds = os.environ.get("FIREBASE_CREDENTIALS")
+if firebase_creds:
+    cred_dict = json.loads(firebase_creds)
+    cred = credentials.Certificate(cred_dict)
+    firebase_admin.initialize_app(cred)
+else:
+    print("⚠️ FIREBASE_CREDENTIALS not set!")
+    
 # Firebase Configuration
 FIREBASE_CONFIG = {
-    "apiKey": "Api key here",
+    "apiKey": "AIzaSyDT0h7T88k51e9JtazrGRUaRi6liiqQhiU",
     "authDomain": "gramin-smartcare.firebaseapp.com",
     "projectId": "gramin-smartcare",
     "storageBucket": "gramin-smartcare.firebasestorage.app",
@@ -43,10 +52,7 @@ FIREBASE_CONFIG = {
     "measurementId": "G-BTQNK50HH8"
 }
 
-GEMINI_API_KEY = "AIzaSyB_5vE2M_7M31ZiHCgkBlXv1vpKcuYWd9Y"
-GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent"
-
-OPENROUTER_API_KEY = "Enter your api key here"
+OPENROUTER_API_KEY =os.environ.get("OPENAI_API_KEY")
 
 # Initialize Firebase Admin SDK
 try:
