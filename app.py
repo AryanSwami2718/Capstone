@@ -2721,35 +2721,26 @@ def server_error(e):
 # APP STARTUP
 # ============================================================
 
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-        print("✅ Database tables created")
-        register_templates()
-        setup_template_loader()
-        print("✅ Templates registered")
-        seed_database()
-        try:
-            if firestore_db:
-                for u in User.query.all(): sync_user_to_firestore(u)
-                print("✅ Initial Firestore sync complete")
-        except Exception as e: print(f"⚠️ Sync skipped: {e}")
-
+with app.app_context():
+    db.drop_all()
+    db.create_all()
+    print("✅ Database tables created")
     register_templates()
     setup_template_loader()
+    print("✅ Templates registered")
+    seed_database()
+    try:
+        if firestore_db:
+            for u in User.query.all():
+                sync_user_to_firestore(u)
+            print("✅ Initial Firestore sync complete")
+    except Exception as e:
+        print(f"⚠️ Sync skipped: {e}")
 
-    print("\n" + "="*60)
+if __name__ == '__main__':
+    print("\n" + "=" * 60)
     print("🏥 GRAMIN SMARTCARE - Ready!")
-    print("="*60)
+    print("=" * 60)
     print("🌐 Open: http://localhost:5000")
-    print("-"*60)
-    print("📧 Demo: pharmacist@demo.com / demo123")
-    print("📧 Demo: doctor@demo.com / demo123")
-    print("📧 Demo: patient@demo.com / demo123")
-    print("-"*60)
-    print("📍 Location: Kolhapur, Maharashtra")
-    print("🔥 Firebase: Auth + Firestore")
-    print("🤖 Gemini AI: gemini-2.0-flash")
-    print("="*60 + "\n")
-
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    print("=" * 60 + "\n")
+    app.run(debug=False, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
