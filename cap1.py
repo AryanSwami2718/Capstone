@@ -46,7 +46,7 @@ FIREBASE_CONFIG = {
 GEMINI_API_KEY = "AIzaSyB_5vE2M_7M31ZiHCgkBlXv1vpKcuYWd9Y"
 GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent"
 
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "Enter your api key here"
 
 # Initialize Firebase Admin SDK
 try:
